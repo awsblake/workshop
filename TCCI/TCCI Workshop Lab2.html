@@ -1,0 +1,532 @@
+<!doctype html>
+<html><head><title>TCCI Workshop Lab2</title><meta charset="UTF-8"><link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic|Roboto:400,700,700italic,400italic" rel="stylesheet" type="text/css"><style>/*
+ * Copyright 2014 Quip
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+body {
+    font-size: 15px;
+    color: #333;
+    background: white;
+    padding: 60px 95px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern";
+    font-kerning: normal;
+    -moz-font-feature-settings: "kern";
+    -webkit-font-feature-settings: "kern";
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+th {
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    margin: 0;
+    margin-top: 1.25em;
+    margin-bottom: 0.75em;
+}
+
+h1 {
+    font-size: 35px;
+    line-height: 42px;
+}
+
+h1:first-child {
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+h3 {
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+/* Body text */
+body,
+p,
+ul,
+ol,
+td {
+    font-family: "Crimson Text", serif;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+blockquote,
+q {
+    display: block;
+    margin: 1em 0;
+    font-style: italic;
+}
+
+blockquote a,
+q a {
+    text-decoration: underline;
+}
+
+blockquote {
+    padding-left: 10px;
+    border-left: 4px solid #a6a6a6;
+}
+
+q {
+    color: #a6a6a6;
+    line-height: 40px;
+    font-size: 24px;
+    text-align: center;
+    quotes: none;
+}
+
+q a {
+    color: #a6a6a6;
+}
+
+code,
+pre {
+    font-family: Consolas, "Liberation Mono", Menlo, "Courier Prime Web",
+        Courier, monospace;
+    background: #f2f2f2;
+}
+
+code {
+    padding: 1px;
+    margin: 0 -1px;
+    border-radius: 3px;
+}
+
+pre {
+    display: block;
+    line-height: 20px;
+    text-shadow: 0 1px white;
+    padding: 5px 5px 5px 30px;
+    white-space: nowrap;
+    position: relative;
+    margin: 1em 0;
+}
+
+pre:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    border-left: solid 1px #dadada;
+}
+
+/* Lists */
+div[data-section-style="5"],
+div[data-section-style="6"],
+div[data-section-style="7"] {
+    margin: 12px 0;
+}
+
+ul {
+    padding: 0 0 0 40px;
+}
+
+ul li {
+    margin-bottom: 0.4em;
+}
+
+/* Bulleted list */
+div[data-section-style="5"] ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul {
+    list-style-type: square;
+}
+div[data-section-style="5"] ul ul ul ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul ul ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul ul ul ul {
+    list-style-type: square;
+}
+
+/* Numbered list */
+div[data-section-style="6"] ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul {
+    list-style-type: lower-roman;
+}
+div[data-section-style="6"] ul ul ul ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul ul ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul ul ul ul {
+    list-style-type: lower-roman;
+}
+
+/* Checklist */
+div[data-section-style="7"] ul {
+    list-style-type: none;
+}
+
+div[data-section-style="7"] ul li:before {
+    content: "\2610";
+    position: absolute;
+    display: inline;
+    margin-right: 1.2em;
+    margin-left: -1.2em;
+}
+
+div[data-section-style="7"] ul li.parent:before {
+    content: "";
+}
+
+div[data-section-style="7"] ul li.parent {
+    font-weight: bold;
+}
+
+div[data-section-style="7"] ul li.checked {
+    text-decoration: line-through;
+}
+
+div[data-section-style="7"] ul li.checked:before {
+    content: "\2611";
+    text-decoration: none;
+}
+
+/* Tables */
+div[data-section-style="8"] {
+    margin: 12px 0;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: separate;
+    border: solid 1px #bbb;
+    table-layout: fixed;
+    position: relative;
+}
+
+table th,
+table td {
+    padding: 2px 2px 0;
+    min-width: 1.5em;
+    word-wrap: break-word;
+}
+
+table th {
+    border-bottom: 1px solid #c7cbd1;
+    background: #f2f2f2;
+    font-weight: bold;
+    vertical-align: bottom;
+    color: #3a4449;
+    text-align: center;
+}
+
+table td {
+    padding-top: 0;
+    border-left: 1px solid #c7cbd1;
+    border-top: 1px solid #c7cbd1;
+    vertical-align: top;
+}
+
+table td.bold {
+    font-weight: bold;
+}
+
+table td.italic {
+    font-style: italic;
+}
+
+table td.underline {
+    text-decoration: underline;
+}
+
+table td.strikethrough {
+    text-decoration: line-through;
+}
+
+table td.underline.strikethrough {
+    text-decoration: underline line-through;
+}
+
+table td:first-child {
+    border-left: hidden;
+}
+
+table tr:first-child td {
+    border-top: hidden;
+}
+
+/* Images */
+div[data-section-style="11"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div[data-section-style="11"][data-section-float="0"] {
+    clear: both;
+    text-align: center;
+}
+
+div[data-section-style="11"][data-section-float="1"] {
+    float: left;
+    clear: left;
+    margin-right: 20px;
+}
+
+div[data-section-style="11"][data-section-float="2"] {
+    float: right;
+    clear: right;
+    margin-left: 20px;
+}
+
+div[data-section-style="11"] img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+hr {
+    width: 70px;
+    margin: 20px auto;
+}
+
+/* Apps */
+div[data-section-style="19"].placeholder {
+    margin: 0.8em auto;
+    padding: 4px 0;
+    display: block;
+    color: #3d87f5;
+    text-align: center;
+    border: 1px solid rgba(41, 182, 242, 0.2);
+    border-radius: 3px;
+    background: #e9f8fe;
+    font-family: Roboto, sans-serif;
+}
+
+div[data-section-style="19"].first-party-element {
+    margin-bottom: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+div[data-section-style="19"].first-party-element.kanban {
+    background-image: url("https://quip-cdn.com/nK0hSyhsb4jrLIL2s5Ma-g");
+    height: 166px;
+}
+
+div[data-section-style="19"].first-party-element.calendar {
+    background-image: url("https://quip-cdn.com/OYujqLny03RILxcLIiyERg");
+    height: 244px;
+}
+
+div[data-section-style="19"].first-party-element.poll {
+    background-image: url("https://quip-cdn.com/fbIiFrcKGv__4NB7CBfxoA");
+    height: 116px;
+}
+
+div[data-section-style="19"].first-party-element.countdown {
+    background-image: url("https://quip-cdn.com/3bPhykD2dBei9sSjCWteTQ");
+    height: 96px;
+}
+
+div[data-section-style="19"].first-party-element.process_bar {
+    background-image: url("https://quip-cdn.com/ybQlHnHEIIBLog5rZmYs_w");
+    height: 36px;
+}
+
+div[data-section-style="19"].first-party-element.project_tracker {
+    background-image: url("https://quip-cdn.com/OFQU087b4Mxzz1ZaHwtjXA");
+    height: 164px;
+}
+
+div[data-section-style="19"] img {
+    margin: 0.5em;
+}
+
+div[data-section-style="19"] img.masked-image {
+    margin: 0;
+    transform-origin: top left;
+}
+
+div[data-section-style="19"] .image-mask {
+    position: relative;
+    overflow: hidden;
+}
+</style></head><body><h1 id='HcV9CACtD93'>TCCI Workshop Lab2</h1>
+
+<f style="color:#323232" textcolor="#323232">In this lab we’re we will walk you through setting up and entire AWS Greengrass installation including building a simple Greengrass aware client to communicate with your Greengrass core.</f><br/>
+
+<br/>
+
+<h2 id='HcV9CAVxaNQ'>Step 1 - Getting Started</h2>
+
+<f style="color:#323232" textcolor="#323232">You’re going to be setting up Greengrass on the hardware provided.</f><br/>
+
+<h2 id='HcV9CAhut3E'>Step 2 - Setting up the Greengrass Group</h2>
+
+<f style="color:#323232" textcolor="#323232">Next we’re going to setup the Greengrass group and we’re going to be using the AWS IoT Console to complete these steps. The group is how we control which devices can communicate with core as well as the available Lambdas and logging options.</f><br/>
+
+<div class="" data-section-style='5' style=""><ul id='HcV9CAI3Lld'><li id='HcV9CAj5P1r' class='' value='1'>Log into the AWS IoT Console and click on Greengrass
+
+<br/></li><li id='HcV9CA4FxKO' class=''>Select,<f style="color:#323232" textcolor="#323232"> </f>Create first group
+
+<br/></li></ul></div><h3 id='HcV9CAaSnmc'>Step 2 - Setting up the Greengrass Group</h3>
+
+<f style="color:#323232" textcolor="#323232">Next we’re going to setup the Greengrass group and we’re going to be using the AWS IoT Console to complete these steps. The group is how we control which devices can communicate with core as well as the available Lambdas and logging options.</f><br/>
+
+<div class="" data-section-style='5' style=""><ul id='HcV9CAPkB90'><li id='HcV9CAjNAxA' class='' value='1'>Log into the AWS IoT Console and click on Greengrass
+
+<br/></li><li id='HcV9CACPYZZ' class=''>Select,<f style="color:#323232" textcolor="#323232"> </f>Create first group
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HcV9AAQhZ59/MRbOt3h8OLzJDtX_zMAMJg?a=wqE1SqtIJvnFoBbbzZa3kmd9GQ3Qa0yHWDZqpSta82ca' id='HcV9CAHim0C' alt='' width='597' height='468'></img></div><div class="" data-section-style='5' style=""><ul id='HcV9CAlAtbA'><li id='HcV9CAEBYyW' class='' value='1'>Select,<f style="color:#323232" textcolor="#323232"> </f>Easy Group Creation
+
+<br/></li><li id='HcV9CAErZSK' class=''>Enter a group name, let’s use TcciWorkshop
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HcV9AAQhZ59/g8WP219ZEch_iCJ2ji7IoQ?a=OqGBrUCX8FjIuF36HsSAhgMphhwbpqlFUH54mOTaijQa' id='HcV9CALPx0z' alt='' width='800' height='324'></img></div><div class="" data-section-style='5' style=""><ul id='HcV9CAdN7yW'><li id='HcV9CARFfEJ' class='' value='1'><f style="color:#323232" textcolor="#323232">Keep the same core name, Tcci</f>Workshop_Core
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HcV9AAQhZ59/uYrOpNN7KvzmrPgub03i_w?a=8O9PaAZAKBxPlxmDiOatX2WLfyyHx5bxWg32ctoQoR8a' id='HcV9CAmrcPU' alt='' width='800' height='357'></img></div><div class="" data-section-style='5' style=""><ul id='HcV9CAOAQ4u'><li id='HcV9CAG6t7H' class='' value='1'>Select,<f style="color:#323232" textcolor="#323232"> </f>Create Group and Core
+
+<br/></li></ul></div><f style="color:#323232" textcolor="#323232">The wizard is setting up all the Greengrass dependencies that you need. There are quite a few things being done for you:</f><br/>
+
+<div class="" data-section-style='5' style=""><ul id='HcV9CAkQi80'><li id='HcV9CAHMGE3' class='' value='1'>The Group is created
+
+<br/></li><li id='HcV9CANxQYZ' class=''>The Core thing is created, this is the device that is your Greengrass group
+
+<br/></li><li id='HcV9CAKCWOS' class=''>Certificates for your core thing are created for you
+
+<br/></li><li id='HcV9CAWfJ4a' class=''>Security policies and logging defaults are also created
+
+<br/></li></ul></div><f style="color:#323232" textcolor="#323232">On the completion screen you will need to download the package which contains all your certificates and the configuration file for your core.</f><br/>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HcV9AAQhZ59/-D-E_oylcebrhnGB9dyN7Q?a=GqFnVCXjdTd8T7c3EtyttLoy29RQpTraPv7mMn8SWdAa' id='HcV9CAAX2UO' alt='' width='800' height='722'></img></div><f style="color:#323232" textcolor="#323232">Complete the next steps and then we’ll copy these files to our device.</f><br/>
+
+<h2 id='HcV9CAq4fBk'>Step 3 - Setup your Group Role</h2>
+
+<f style="color:#323232" textcolor="#323232">You need a role attached to your Greengrass group that gives additional permissions to the core to be able to directly access various AWS services.</f><br/>
+
+<div class="" data-section-style='5' style=""><ul id='HcV9CAQIOmU'><li id='HcV9CAJy4dn' class='' value='1'>Open the Identity and Access Management console (IAM)
+
+<br/></li><li id='HcV9CAkgXBF' class=''>Click on roles and Create role
+
+<br/></li><li id='HcV9CAb36Vr' class=''>Select AWS Greengrass Role as the<f style="color:#323232" textcolor="#323232"> </f>Service Role Type
+
+<br/></li></ul></div><div data-section-style='11' class='tall' style='max-width:100%'><img src='https://quip-amazon.com/blob/HcV9AAQhZ59/soJke6OXno8je5DAinbBmw?a=wZTXsS1ANcrMagcqyaIdkeHSjcLAWB1MzQzHPvlPaBEa' id='HcV9CAfJNu3' alt='' width='790' height='859'></img></div><div class="" data-section-style='5' style=""><ul id='HcV9CAcJK0Y'><li id='HcV9CAqZ62X' class='' value='1'>Select AWSGreengrassResourceAccessPolicy.
+
+<br/></li><li id='HcV9CAFWP0v' class=''>You also want to add the CloudWatchLogsFullAccess policy and click next.
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HcV9AAQhZ59/1hKi3Rv_znv_8LTur3S5qg?a=Lr4E0H8HapoJ0ZdQsctOR9hFbUEnJMRmNu6Ntb5iw0wa' id='HcV9CA95Pz9' alt='' width='800' height='639'></img></div><div class="" data-section-style='5' style=""><ul id='HcV9CA7As8m'><li id='HcV9CAOKUDL' class='' value='1'><f style="color:#323232" textcolor="#323232">Enter a name for this role, let’s call it TcciCoreRole</f>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HcV9AAQhZ59/24AaiK5Bnpw4u3WkkzGF6Q?a=r68l1wwcZ18VR4acFTcaPJ7HLMqfrR12adnayiywbvga' id='HcV9CAVZAnH' alt='' width='800' height='650'></img></div><div class="" data-section-style='5' style=""><ul id='HcV9CAJovts'><li id='HcV9CA7yWp8' class='' value='1'>Click Create Role
+
+<br/></li></ul></div><f style="color:#323232" textcolor="#323232">Next we’re going to attach this role to our new Greengrass group.</f><br/>
+
+<div class="" data-section-style='5' style=""><ul id='HcV9CAAJQIw'><li id='HcV9CAMzRZt' class='' value='1'>Open the AWS IoT console
+
+<br/></li><li id='HcV9CASOsCp' class=''>Click on Greengrass and select the RatchetGroup group
+
+<br/></li><li id='HcV9CA2J5cE' class=''>Click on Settings, you can see we have no Group Role
+
+<br/></li></ul></div><div class="" data-section-style='5' style=""><ul id='HcV9CAzq3wH'><li id='HcV9CA0pGvu' class='' value='1'><f style="color:#323232" textcolor="#323232">Click on Add Role</f>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HcV9AAQhZ59/soW9Rg6tLC9tezyfFmHP7Q?a=n6Gw8g3tHCsVDchjqJ5WAaVTXpYtjcnR8eSDPalImw8a' id='HcV9CAGtIdi' alt='' width='800' height='524'></img></div><div class="" data-section-style='5' style=""><ul id='HcV9CAcjQm5'><li id='HcV9CArofiU' class='' value='1'><f style="color:#323232" textcolor="#323232">Pick our service role, RatchetCoreRole and click Save</f>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HcV9AAQhZ59/dgppAhwmHraspTHsGC-Ejg?a=jWV0sfmiFYwaFekBKrXCL7tj1kIZ8HF4Wt1u4Pguprka' id='HcV9CADUt4s' alt='' width='800' height='366'></img></div><h2 id='HcV9CAhCdGP'>Step 4 - Setup logging</h2>
+
+<f style="color:#323232" textcolor="#323232">We can setup logging so that all logs on the Greengrass core are sent to CloudWatch logs. This includes the logs from the operation of the core as well as the logs from our Lambda functions which are extremely useful to have.</f><br/>
+
+<div class="" data-section-style='5' style=""><ul id='HcV9CAQZQol'><li id='HcV9CAFOk3Z' class='' value='1'>Open the AWS IoT console
+
+<br/></li><li id='HcV9CAlLUyb' class=''>Click on Greengrass and select the TcciWorkshop group
+
+<br/></li><li id='HcV9CAu4D1R' class=''>Click on Settings
+
+<br/></li><li id='HcV9CAXRMux' class=''>Under CloudWatch logs configuration click Edit
+
+<br/></li><li id='HcV9CAE40ur' class=''>Click on Add another log type
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HcV9AAQhZ59/DniDrrEHR0PWYli8eLqADg?a=t4UzqzFfDwavIAWRgyXRX1OWb5Og3iIPrmvW0AbQqXAa' id='HcV9CAiOym2' alt='' width='800' height='408'></img></div><div class="" data-section-style='5' style=""><ul id='HcV9CAgv4lp'><li id='HcV9CA36KzM' class='' value='1'>Select User Lambdas and Greengrass system
+
+<br/></li><li id='HcV9CAYNOn4' class=''>Click Update
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HcV9AAQhZ59/hNzpSfyQqWYONakARD-HWQ?a=fEatJ68lRs6L6bLVr5ayCmJvL8ALaMgUpcAfGv5IHnsa' id='HcV9CAt9TQ4' alt='' width='800' height='365'></img></div><div class="" data-section-style='5' style=""><ul id='HcV9CAYzsa8'><li id='HcV9CAviB5K' class='' value='1'><f style="color:#323232" textcolor="#323232">Keep the log settings as Informational</f>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HcV9AAQhZ59/rUH6p0LDDiwvoClHCq1a6g?a=witVRA1ZeGoFQb6jJIvUuNCuzJ2SQefwlfa95z05yaAa' id='HcV9CAgR3o7' alt='' width='800' height='800'></img></div><div class="" data-section-style='5' style=""><ul id='HcV9CAM2sEa'><li id='HcV9CAZoIHn' class='' value='1'>Click Save
+
+<br/></li></ul></div><h2 id='HcV9CA5q7cE'>Step 5 - Installing Greengrass on our device</h2>
+
+<f style="color:#444444" textcolor="#444444">In the </f>previous step<f style="color:#444444" textcolor="#444444">, you downloaded two files to your computer:</f><br/>
+
+<div class="" data-section-style='5' style=""><ul id='HcV9CAH0dWT'><li id='HcV9CAVtVE0' class='' value='1'><a href="https://d1onfpft10uf5o.cloudfront.net/greengrass-core/downloads/1.9.2/greengrass-linux-armv7l-1.9.2.tar.gz"><b><i>greengrass-linux-armv7l-1.9.2.tar.gz</i></b></a><b><i><f style="color:#444444" textcolor="#444444">.</f></i></b><f style="color:#444444" textcolor="#444444"> This compressed file contains the AWS IoT Greengrass Core software that runs on the core device.</f>
+
+<br/></li><li id='HcV9CABFEXt' class=''><b><i><f style="color:#444444" textcolor="#444444">hash</f></i><f style="color:#444444" textcolor="#444444">-setup.tar.gz</f></b><f style="color:#444444" textcolor="#444444"><b>.</b> This compressed file contains security certificates that enable secure communications between AWS IoT and the </f><f style="color:#444444" textcolor="#444444">config.json</f><f style="color:#444444" textcolor="#444444"> file that contains configuration information specific to your AWS IoT Greengrass core and the AWS IoT endpoint.</f>
+
+<br/></li></ul></div><div data-section-style='6' class="" style=""><ul id='HcV9CAupffJ'><li id='HcV9CApvrlg' class='' value='1'>Open a terminal on the Raspberry Pi and run the following command.<br><code>hostname -I</code>
+
+<br/></li><li id='HcV9CA7th9w' class=''>Transfer the two compressed files form your computer to the Raspberry Pi.<br>Use a tool such as WinSCP or USB disk to copy files.
+
+<br/></li><li id='HcV9CAyveQ9' class=''><f style="color:#444444" textcolor="#444444">Open a terminal on the Raspberry Pi and navigate to the folder that contains the compressed files.</f>
+
+<br/></li><li id='HcV9CAUXTBB' class=''><f style="color:#444444" textcolor="#444444">Decompress the AWS IoT Greengrass Core software and the security resources.<br></f><code><f style="color:#444444" textcolor="#444444">sudo tar -xzvf greengrass-linux-armv7l</f><f style="color:#444444" textcolor="#444444">-1.9.2.tar.gz -C /<br>sudo tar -xzvf </f><i><f style="color:#444444" textcolor="#444444">hash</f></i><f style="color:#444444" textcolor="#444444">-setup.tar.gz -C /greengrass</f></code>
+
+<br/></li><li id='HcV9CAp3RxO' class=''><f style="color:#444444" textcolor="#444444">Download the root CA certificate to your core device.<br></f><code><f style="color:#444444" textcolor="#444444">cd /greengrass/certs/<br>sudo wget -O root.ca.pem https://www.amazontrust.com/repository/AmazonRootCA1.pem</f></code>
+
+<br/></li></ul></div><h2 id='HcV9CAdraGd'>Step 7 - Starting the Greengrass core</h2>
+
+<f style="color:#323232" textcolor="#323232">In this step we’re going to run the core with it’s current configuration. Once we see that it is running we will then deploy the group configuration from the console.</f><br/>
+
+<f style="color:#323232" textcolor="#323232">Let’s run Greengrass!</f><br/>
+
+<pre id='HcV9CAXZJXw'><code><f style="color:#444444" textcolor="#444444">cd /greengrass/ggc/core/<br>sudo ./greengrassd start</f></code></pre>
+
+<h2 id='HcV9CAZ7EGI'>Step 8 - Deploying the Greengrass Group</h2>
+
+<f style="color:#323232" textcolor="#323232">Now that you have the core running, let’s deploy a very basic group.</f><br/>
+
+<div class="" data-section-style='5' style=""><ul id='HcV9CArpGMY'><li id='HcV9CAoCSyI' class='' value='1'>On your group management page, click on Deployments
+
+<br/></li><li id='HcV9CAvYhBE' class=''>Click on Actions and Deploy
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HcV9AAQhZ59/Vf5RWxWyXkGLM_WzESyC6Q?a=ukgDKyxUavJ0Rs2ajSSalGODSDFAl329n86HK8CIFqYa' id='HcV9CAs0ytN' alt='' width='800' height='350'></img></div><br/>
+
+<br/>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HcV9AAQhZ59/dJrrOU76k_xaoHErJWHg4Q?a=ZSCDYHNDazxAdaQN6v9z8c20IXbdfRG8aTzBuO7QUDIa' id='HcV9CAkZlDg' alt='' width='800' height='430'></img></div><div class="" data-section-style='5' style=""><ul id='HcV9CAdPcas'><li id='HcV9CAQlpZL' class='' value='1'><f style="color:#323232" textcolor="#323232">Your deployment will be packaged up and sent to the core.</f>
+
+<br/></li></ul></div><f style="color:#323232" textcolor="#323232">Once it is deployed you can move onto the next Greengrass lab. So far you have a functioning core but it doesn’t do much. In the next lab we’ll setup a full group and connect a test device.</f><br/>
+
+<b><f style="color:#323232" textcolor="#323232">Congrats on getting Greengrass running!</f></b><br/>
+
+<br/>
+
+<br/>
+
+</body></html>

@@ -1,0 +1,588 @@
+<!doctype html>
+<html><head><title>TCCI Workshop Lab3</title><meta charset="UTF-8"><link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic|Roboto:400,700,700italic,400italic" rel="stylesheet" type="text/css"><style>/*
+ * Copyright 2014 Quip
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+body {
+    font-size: 15px;
+    color: #333;
+    background: white;
+    padding: 60px 95px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern";
+    font-kerning: normal;
+    -moz-font-feature-settings: "kern";
+    -webkit-font-feature-settings: "kern";
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+th {
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    margin: 0;
+    margin-top: 1.25em;
+    margin-bottom: 0.75em;
+}
+
+h1 {
+    font-size: 35px;
+    line-height: 42px;
+}
+
+h1:first-child {
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+h3 {
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+/* Body text */
+body,
+p,
+ul,
+ol,
+td {
+    font-family: "Crimson Text", serif;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+blockquote,
+q {
+    display: block;
+    margin: 1em 0;
+    font-style: italic;
+}
+
+blockquote a,
+q a {
+    text-decoration: underline;
+}
+
+blockquote {
+    padding-left: 10px;
+    border-left: 4px solid #a6a6a6;
+}
+
+q {
+    color: #a6a6a6;
+    line-height: 40px;
+    font-size: 24px;
+    text-align: center;
+    quotes: none;
+}
+
+q a {
+    color: #a6a6a6;
+}
+
+code,
+pre {
+    font-family: Consolas, "Liberation Mono", Menlo, "Courier Prime Web",
+        Courier, monospace;
+    background: #f2f2f2;
+}
+
+code {
+    padding: 1px;
+    margin: 0 -1px;
+    border-radius: 3px;
+}
+
+pre {
+    display: block;
+    line-height: 20px;
+    text-shadow: 0 1px white;
+    padding: 5px 5px 5px 30px;
+    white-space: nowrap;
+    position: relative;
+    margin: 1em 0;
+}
+
+pre:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    border-left: solid 1px #dadada;
+}
+
+/* Lists */
+div[data-section-style="5"],
+div[data-section-style="6"],
+div[data-section-style="7"] {
+    margin: 12px 0;
+}
+
+ul {
+    padding: 0 0 0 40px;
+}
+
+ul li {
+    margin-bottom: 0.4em;
+}
+
+/* Bulleted list */
+div[data-section-style="5"] ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul {
+    list-style-type: square;
+}
+div[data-section-style="5"] ul ul ul ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul ul ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul ul ul ul {
+    list-style-type: square;
+}
+
+/* Numbered list */
+div[data-section-style="6"] ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul {
+    list-style-type: lower-roman;
+}
+div[data-section-style="6"] ul ul ul ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul ul ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul ul ul ul {
+    list-style-type: lower-roman;
+}
+
+/* Checklist */
+div[data-section-style="7"] ul {
+    list-style-type: none;
+}
+
+div[data-section-style="7"] ul li:before {
+    content: "\2610";
+    position: absolute;
+    display: inline;
+    margin-right: 1.2em;
+    margin-left: -1.2em;
+}
+
+div[data-section-style="7"] ul li.parent:before {
+    content: "";
+}
+
+div[data-section-style="7"] ul li.parent {
+    font-weight: bold;
+}
+
+div[data-section-style="7"] ul li.checked {
+    text-decoration: line-through;
+}
+
+div[data-section-style="7"] ul li.checked:before {
+    content: "\2611";
+    text-decoration: none;
+}
+
+/* Tables */
+div[data-section-style="8"] {
+    margin: 12px 0;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: separate;
+    border: solid 1px #bbb;
+    table-layout: fixed;
+    position: relative;
+}
+
+table th,
+table td {
+    padding: 2px 2px 0;
+    min-width: 1.5em;
+    word-wrap: break-word;
+}
+
+table th {
+    border-bottom: 1px solid #c7cbd1;
+    background: #f2f2f2;
+    font-weight: bold;
+    vertical-align: bottom;
+    color: #3a4449;
+    text-align: center;
+}
+
+table td {
+    padding-top: 0;
+    border-left: 1px solid #c7cbd1;
+    border-top: 1px solid #c7cbd1;
+    vertical-align: top;
+}
+
+table td.bold {
+    font-weight: bold;
+}
+
+table td.italic {
+    font-style: italic;
+}
+
+table td.underline {
+    text-decoration: underline;
+}
+
+table td.strikethrough {
+    text-decoration: line-through;
+}
+
+table td.underline.strikethrough {
+    text-decoration: underline line-through;
+}
+
+table td:first-child {
+    border-left: hidden;
+}
+
+table tr:first-child td {
+    border-top: hidden;
+}
+
+/* Images */
+div[data-section-style="11"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div[data-section-style="11"][data-section-float="0"] {
+    clear: both;
+    text-align: center;
+}
+
+div[data-section-style="11"][data-section-float="1"] {
+    float: left;
+    clear: left;
+    margin-right: 20px;
+}
+
+div[data-section-style="11"][data-section-float="2"] {
+    float: right;
+    clear: right;
+    margin-left: 20px;
+}
+
+div[data-section-style="11"] img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+hr {
+    width: 70px;
+    margin: 20px auto;
+}
+
+/* Apps */
+div[data-section-style="19"].placeholder {
+    margin: 0.8em auto;
+    padding: 4px 0;
+    display: block;
+    color: #3d87f5;
+    text-align: center;
+    border: 1px solid rgba(41, 182, 242, 0.2);
+    border-radius: 3px;
+    background: #e9f8fe;
+    font-family: Roboto, sans-serif;
+}
+
+div[data-section-style="19"].first-party-element {
+    margin-bottom: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+div[data-section-style="19"].first-party-element.kanban {
+    background-image: url("https://quip-cdn.com/nK0hSyhsb4jrLIL2s5Ma-g");
+    height: 166px;
+}
+
+div[data-section-style="19"].first-party-element.calendar {
+    background-image: url("https://quip-cdn.com/OYujqLny03RILxcLIiyERg");
+    height: 244px;
+}
+
+div[data-section-style="19"].first-party-element.poll {
+    background-image: url("https://quip-cdn.com/fbIiFrcKGv__4NB7CBfxoA");
+    height: 116px;
+}
+
+div[data-section-style="19"].first-party-element.countdown {
+    background-image: url("https://quip-cdn.com/3bPhykD2dBei9sSjCWteTQ");
+    height: 96px;
+}
+
+div[data-section-style="19"].first-party-element.process_bar {
+    background-image: url("https://quip-cdn.com/ybQlHnHEIIBLog5rZmYs_w");
+    height: 36px;
+}
+
+div[data-section-style="19"].first-party-element.project_tracker {
+    background-image: url("https://quip-cdn.com/OFQU087b4Mxzz1ZaHwtjXA");
+    height: 164px;
+}
+
+div[data-section-style="19"] img {
+    margin: 0.5em;
+}
+
+div[data-section-style="19"] img.masked-image {
+    margin: 0;
+    transform-origin: top left;
+}
+
+div[data-section-style="19"] .image-mask {
+    position: relative;
+    overflow: hidden;
+}
+</style></head><body><h1 id='YLU9CAvecNT'>TCCI Workshop Lab3</h1>
+
+<f style="color:#323232" textcolor="#323232">Complete your Greengrass group configuration by setting up a Lambda function, client device and some subscription rules. You will also build a test client and obtain the required certificates to connect a Greengrass aware device.</f><br/>
+
+<h2 id='YLU9CA2ctpK'>Architecture</h2>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/4kRij5lD7CBe_FHjNgoYFQ?a=Fx5aF50eCElU6AIa0Qna6Ch3AcehaJhw956eDtqJyrca' id='YLU9CAvBZxd' alt='' width='764' height='670'></img></div><h2 id='YLU9CAakQl1'>Step 1 - Creating a Lambda function for the core</h2>
+
+<f style="color:#323232" textcolor="#323232">There are a few things we need to setup before we configure our group and that is a test lambda function.</f><br/>
+
+<f style="color:#323232" textcolor="#323232">This function will wait to be invoked and when it is, it will publish a message to a cloud topic. The workflow here is as follows:</f><br/>
+
+<b><i><f style="color:#323232" textcolor="#323232">Test Device -&gt; Greengrass Core -&gt; Lambda -&gt; AWS IoT (Via Core)</f></i></b><br/>
+
+<f style="color:#323232" textcolor="#323232">The test device will publish on a top called</f><b><f style="color:#323232" textcolor="#323232"> freertos/demos/ggd </f></b><f style="color:#323232" textcolor="#323232">and that will route to the local lambda function which in turn publishes a response message to the cloud on topic <b>iotdemo/topic/pub</b>. When using the MQTT Client in the console we will see this publish-response.</f><br/>
+
+<f style="color:#323232" textcolor="#323232">Lambda functions require some additional modules that aren’t intrinsic to Lambda and need to be packaged and uploaded.</f><br/>
+
+<br/>
+
+<f style="color:#323232" textcolor="#323232">Next we need to create our new Lambda and upload the zipped TcciWorkshop_Hello lambda function.</f><br/>
+
+<div data-section-style='5' class="" style=""><ul id='YLU9CAeqeEH'><li id='YLU9CAsSnT4' class='' value='1'>Open the Lambda console
+
+<br/></li><li id='YLU9CA03xcl' class=''>Click <b>Create function</b>
+
+<br/></li><li id='YLU9CANwgTC' class=''>Select the<b> Author from scratch</b>
+
+<br/></li><li id='YLU9CAUpinq' class=''>For the Name enter <b>Greengrass_HelloWorld</b>
+
+<br/></li><li id='YLU9CAm8UF4' class=''>Select<b><f style="color:#323232" textcolor="#323232"> </f>Python 2.7</b><f style="color:#323232" textcolor="#323232"> </f>for the runtime
+
+<br/></li><li id='YLU9CAr1OWv' class=''><f style="color:#444444" textcolor="#444444">For </f><b>Permissions</b><f style="color:#444444" textcolor="#444444">, keep the default setting</f>
+
+<br/></li><li id='YLU9CAUb6qi' class=''>Click Create function
+
+<br/></li></ul></div><div data-section-style='5' class="" style=""><ul id='YLU9CA4IMAH'><li id='YLU9CA6WgYV' class='' value='1'><span data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/hsQLHNUkfIPOFLD_bPGc7A?a=jCu2J3LeJalqQGYS0PRRmypoNcbWheM7lfT8h1l2oQYa' id='YLU9CA6WgYV' alt='' width='800' height='389'></img></span></li><li id='YLU9CAM4wX2' class='parent'><f style="color:#444444" textcolor="#444444">Upload your Lambda function deployment package:</f>
+
+<br/></li><ul><li id='YLU9CA0DOHj' class=''><f style="color:#444444" textcolor="#444444">On the </f><b><f style="color:#444444" textcolor="#444444">Configuration</f></b><f style="color:#444444" textcolor="#444444"> tab, under </f><b><f style="color:#444444" textcolor="#444444">Function code</f></b><f style="color:#444444" textcolor="#444444">, set the following fields:</f>
+
+<br/></li></ul></ul></div><div data-section-style='5' class="" style=""><ul id='YLU9CA88dYZ'><ul><ul><li id='YLU9CAkgUZ7' class='' value='1'><f style="color:#444444" textcolor="#444444">For </f><b><f style="color:#444444" textcolor="#444444">Code entry type</f></b><f style="color:#444444" textcolor="#444444">, choose </f><b><f style="color:#444444" textcolor="#444444">Upload a .zip file</f></b><f style="color:#444444" textcolor="#444444">.</f>
+
+<br/></li><li id='YLU9CARzJ5Y' class=''><f style="color:#444444" textcolor="#444444">For </f><b><f style="color:#444444" textcolor="#444444">Runtime</f></b><f style="color:#444444" textcolor="#444444">, choose </f><b><f style="color:#444444" textcolor="#444444">Python 2.7</f></b><f style="color:#444444" textcolor="#444444">.</f>
+
+<br/></li><li id='YLU9CA5v5we' class=''><f style="color:#444444" textcolor="#444444">For </f><b><f style="color:#444444" textcolor="#444444">Handler</f></b><f style="color:#444444" textcolor="#444444">, enter </f><b><f style="color:#444444" textcolor="#444444">greengrassHelloWorld.function_handler</f></b>
+
+<br/></li></ul><li id='YLU9CA1I23O' class=''><f style="color:#444444" textcolor="#444444">Choose </f><b><f style="color:#444444" textcolor="#444444">Upload</f></b><f style="color:#444444" textcolor="#444444">, and then choose </f><b><f style="color:#444444" textcolor="#444444">hello_world_python_lambda.zip</f></b><f style="color:#444444" textcolor="#444444">.</f>
+
+<br/></li></ul></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/SNPt9mkkzzOYQd3eD0XrEQ?a=yGb7aiKqku8owrIQXvGG9cTNIXu14PgulHg9NWIqFO4a' id='YLU9CAfqYht' alt='' width='800' height='184'></img></div><div data-section-style='5' class="" style=""><ul id='YLU9CAE6Q9G'><li id='YLU9CALtlgc' class='' value='1'>Choose Save
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/NvQSmy59aY8Ew5bh8q4ahw?a=eYa5aCe8fbTvIIkgo1K1aMcyi9OMgRhS5lxFF6K1HM0a' id='YLU9CAa9GjO' alt='' width='800' height='138'></img></div><h2 id='YLU9CADtvCj'>Step 2 - Attach our lambda function to the group</h2>
+
+<f style="color:#323232" textcolor="#323232">Before we can attach the lambda we need to publish it and use the alias in the group configuration.</f><br/>
+
+<div data-section-style='5' class="" style=""><ul id='YLU9CAtmv4I'><li id='YLU9CAd7Hhe' class='' value='1'><f style="color:#444444" textcolor="#444444">From </f><b>Actions</b><f style="color:#444444" textcolor="#444444">, choose </f><b>Publish new version</b><f style="color:#444444" textcolor="#444444">.</f>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/XZ9sRCXPl4gsi22SCLtK8A?a=lasCgU9fhUqIWdv9trXNjD4zQZzIaWMFaGHqpatbYSka' id='YLU9CAsFM6i' alt='' width='800' height='162'></img></div><div data-section-style='5' class="" style=""><ul id='YLU9CAAc5nq'><li id='YLU9CAHNvpL' class='' value='1'><f style="color:#444444" textcolor="#444444">For </f><b>Version description</b><f style="color:#444444" textcolor="#444444">, enter </f><b>First version</b><f style="color:#444444" textcolor="#444444">, and then choose </f><b>Publish</b><f style="color:#444444" textcolor="#444444">.</f>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/STXqi-PUP5KZ1zkkkGpb-Q?a=XhbdI9rZCWuDNCP9Xhk9NLMYVBOlwx6fmevF3pxHaIMa' id='YLU9CAsF3ZT' alt='' width='800' height='252'></img></div><div data-section-style='5' class="" style=""><ul id='YLU9CAJZq9j'><li id='YLU9CA99QUT' class='' value='1'><f style="color:#444444" textcolor="#444444">Create an </f>alias<f style="color:#444444" textcolor="#444444"> for the Lambda function version</f>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/iVl2JBuDpYMnJ1qrftyYNA?a=MVg1n6OJ8Gu6GYqdfWm29N43PzvnVNXzcaSTyYMmbRka' id='YLU9CAWPbzD' alt='' width='800' height='234'></img></div><div data-section-style='5' class="" style=""><ul id='YLU9CA3TaTX'><li id='YLU9CAQQl0p' class='' value='1'><f style="color:#444444" textcolor="#444444">Name the alias </f><b>GG_HelloWorld</b><f style="color:#444444" textcolor="#444444">, set the version to </f><b>1</b><f style="color:#444444" textcolor="#444444"> (which corresponds to the version that you just published), and then choose </f><b>Create</b><f style="color:#444444" textcolor="#444444">.</f>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/kVHSMO_dZdKQoITh0b-3hA?a=ri35GSomPZsBlaVvNL8KPIrnXkqzi8ErXAFZhoqMxP8a' id='YLU9CAlEA90' alt='' width='716' height='440'></img></div><f style="color:#323232" textcolor="#323232">Ok, we now have an alias. When we make changes later we only have to update our alias’s version and then do a group deployment to send new code to our core.</f><br/>
+
+<f style="color:#323232" textcolor="#323232">Now we need to attach this lambda to our Greengrass group.</f><br/>
+
+<div data-section-style='5' class="" style=""><ul id='YLU9CAfsc2F'><li id='YLU9CA6idFP' class='' value='1'>Open the Greengrass console and select the TcciWorkshop group
+
+<br/></li><li id='YLU9CAdThQm' class=''>Click on Lambdas and select Add your first lambda
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/c16GfEq_lr5feN5H24t37Q?a=8eGZvHetgLW4xDanilFMfx8s5XOm1ZR6l25itR6M0Xoa' id='YLU9CANPd58' alt='' width='800' height='276'></img></div><div data-section-style='5' class="" style=""><ul id='YLU9CA7Vd57'><li id='YLU9CAEx770' class='' value='1'><f style="color:#444444" textcolor="#444444">Choose </f><b>Use existing Lambda</b>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/VtxAqJSFYnROMeDfvowpSg?a=MaZjYkraaU8XNaHjnQ7ATEK6XKS0RtMdVEY1R8hZa0Ia' id='YLU9CABQ6cq' alt='' width='800' height='286'></img></div><div data-section-style='5' class="" style=""><ul id='YLU9CAci4jp'><li id='YLU9CAiOLnB' class='' value='1'><f style="color:#444444" textcolor="#444444">Search for the name of the Lambda you created in the previous step (</f><b>Greengrass_HelloWorld</b><f style="color:#444444" textcolor="#444444">, not the alias name), select it, and then choose </f><b>Next</b>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/Gstij_Vpjyo4WOfSsOUJ0w?a=MiYRi3OqhFweiDr5l1bQI42s8NPNFcalAkTe31q2suYa' id='YLU9CACVzlb' alt='' width='800' height='339'></img></div><div data-section-style='5' class="" style=""><ul id='YLU9CAVL2z3'><li id='YLU9CAFKEiF' class='' value='1'><f style="color:#444444" textcolor="#444444">For the version, choose </f><b><f style="color:#444444" textcolor="#444444">Alias: GG_HelloWorld</f></b><f style="color:#444444" textcolor="#444444">, and then choose </f><b><f style="color:#444444" textcolor="#444444">Finish</f></b><f style="color:#444444" textcolor="#444444">. You should see the </f><b><f style="color:#444444" textcolor="#444444">Greengrass_HelloWorld</f></b><f style="color:#444444" textcolor="#444444"> Lambda function in your group, using the </f><b><f style="color:#444444" textcolor="#444444">GG_HelloWorld</f></b><f style="color:#444444" textcolor="#444444"> alias</f>
+
+<br/></li><li id='YLU9CA0KI8i' class=''><f style="color:#444444" textcolor="#444444">Choose the ellipsis (</f><b><f style="color:#444444" textcolor="#444444">…</f></b><f style="color:#444444" textcolor="#444444">), and then choose </f><b><f style="color:#444444" textcolor="#444444">Edit Configuration</f></b>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/3uQcZcF7eOd9TyNkuWa7gw?a=1yRV5QmNOvG3uM0FXMM97xEmqaP9KJPtU6xXG1QInbca' id='YLU9CAyddNe' alt='' width='800' height='380'></img></div><div data-section-style='5' class="" style=""><ul id='YLU9CAsU1rT'><li id='YLU9CA543E1' class='' value='1'><f style="color:#444444" textcolor="#444444">On the </f><b><f style="color:#444444" textcolor="#444444">Group-specific Lambda configuration</f></b><f style="color:#444444" textcolor="#444444"> page, make the following changes:</f>
+
+<br/></li></ul></div><div data-section-style='5' class="" style=""><ul id='YLU9CAD7v61'><ul><li id='YLU9CA9m3S4' class='' value='1'><f style="color:#444444" textcolor="#444444">Set </f><b><f style="color:#444444" textcolor="#444444">Timeout</f></b><f style="color:#444444" textcolor="#444444"> to 25 seconds. This Lambda function sleeps for 20 seconds before each invocation.</f>
+
+<br/></li><li id='YLU9CA0zEav' class=''><f style="color:#444444" textcolor="#444444">For </f><b><f style="color:#444444" textcolor="#444444">Lambda lifecycle</f></b><f style="color:#444444" textcolor="#444444">, choose </f><b><f style="color:#444444" textcolor="#444444">Make this function long-lived and keep it running indefinitely</f></b><f style="color:#444444" textcolor="#444444">.</f>
+
+<br/></li><li id='YLU9CADvAq1' class=''>Click <b>Update</b>
+
+<br/></li></ul></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/bY0KOuQon-XdMVj7uk3ytA?a=gv7M6Sbf1fYuD9Udwdo2Gbs2gsV1WGHJyhru9wcbNvYa' id='YLU9CAQyUSH' alt='' width='800' height='281'></img></div><f style="color:#323232" textcolor="#323232">Congrats, your lambda is now part of the group. You can also attach different versions and aliases to the same group at the same time!</f><br/>
+
+<h2 id='YLU9CASdIBT'>Step 3 - Create a test thing/device</h2>
+
+<f style="color:#323232" textcolor="#323232">Before we can configure any routing rules (Subscriptions) we need to create a test device or thing and it’s required certificates.</f><br/>
+
+<f style="color:#323232" textcolor="#323232">Note that Greengrass devices are just regular “things” - if you have the certificates of existing things you can use those.</f><br/>
+
+<div data-section-style='5' class="" style=""><ul id='YLU9CAAX2vj'><li id='YLU9CAyI4PS' class='' value='1'>On your group configuration page click on<f style="color:#323232" textcolor="#323232"> </f>Devices
+
+<br/></li><li id='YLU9CA5bJqH' class=''>Click Add your first device
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/QrA6oUlOsavBDbBJvWfZDQ?a=NArB8Sa6a7zujK5dk5TWU2ir8NCT4M2mJsRxirA8J7ga' id='YLU9CAqang5' alt='' width='800' height='574'></img></div><div data-section-style='5' class="" style=""><ul id='YLU9CAN8P2q'><li id='YLU9CAjQdaq' class='' value='1'><f style="color:#323232" textcolor="#323232">Click on Select an IoT Thing</f>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/1yxXSNQ_kd41-BcEhGlvYA?a=knN0CuEgNjsWa36gUa3xitgqokhCBWhHxJtaaVpmdNEa' id='YLU9CAIscXf' alt='' width='800' height='425'></img></div><div data-section-style='5' class="" style=""><ul id='YLU9CAE9XSg'><li id='YLU9CA6TC4n' class='' value='1'>Select <b>tcci-workshop</b> and click<b> Finish</b>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/iBVw3IAoVauLbb412xnnGg?a=h5qQFFAwKHc7qbPLf5r4UgcRcP5qQEva8dFEgBQySiUa' id='YLU9CA5rXR0' alt='' width='800' height='443'></img></div><h2 id='YLU9CAhGwMA'>Step 4 - Create our Subscriptions</h2>
+
+<f style="color:#323232" textcolor="#323232">All data flow within Greengrass must be explicitly defined. These routing rules are called subscriptions.</f><br/>
+
+<f style="color:#323232" textcolor="#323232">For this lab we need to create three subscriptions. We need to allow data from our ESP32 to trigger the lambda function and then we need to allow the lambda function to publish messages to our cloud topic and ESP32.</f><br/>
+
+<div data-section-style='5' class="" style=""><ul id='YLU9CAdvwFn'><li id='YLU9CAQY04a' class='' value='1'>On your group configuration page click on<f style="color:#323232" textcolor="#323232"> </f>Subscriptions
+
+<br/></li><li id='YLU9CAb6cGQ' class=''>Click on Add your first Subscription
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/tp7v32dvOdQJ9FEwOLAVFQ?a=FJ8TQrNPYMRrVo97R4lzI6TR1OOaFY3etJpuh8uTqpQa' id='YLU9CAOlrPs' alt='' width='800' height='438'></img></div><div data-section-style='5' class="" style=""><ul id='YLU9CAiweLB'><li id='YLU9CAdVFj6' class='' value='1'>The source should be our Device -<f style="color:#323232" textcolor="#323232"> tcci-workshop</f>
+
+<br/></li><li id='YLU9CAvamz3' class=''>The target should be our Lambda -<f style="color:#323232" textcolor="#323232"> Greengrass_HelloWorld</f>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/MAt390-yl-9wTM1h7h_H7A?a=5masAPaJTZnDk60xHcTRCpfraP91ZoqJMBcuOaMgbMga' id='YLU9CACBm6n' alt='' width='800' height='416'></img></div><div data-section-style='5' class="" style=""><ul id='YLU9CA3ySS6'><li id='YLU9CA7hk3W' class='' value='1'>Click Next
+
+<br/></li><li id='YLU9CAhgXlJ' class=''>For the topic filter enter<f style="color:#323232" textcolor="#323232"> freertos/demos/ggd</f>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/OF6-8Z9kiG2S4w0yyu8xEg?a=3uZIURveGQakPMeUjUCc77ZFUMuKGc0WLn5MJWo0P8wa' id='YLU9CAtBLrs' alt='' width='800' height='412'></img></div><div data-section-style='5' class="" style=""><ul id='YLU9CAC6GmO'><li id='YLU9CA0u7Ya' class='' value='1'>Click Next and then Finish
+
+<br/></li></ul></div><f style="color:#323232" textcolor="#323232">Let’s create another subscription, this next one allows traffic from the Lambda to the cloud.</f><br/>
+
+<div data-section-style='5' class="" style=""><ul id='YLU9CA4hElM'><li id='YLU9CAGFA3l' class='' value='1'>Click Add Subscription
+
+<br/></li><li id='YLU9CASqwpe' class=''>The source should be our Lambda -<f style="color:#323232" textcolor="#323232"> GreengrassHelloWorld</f>
+
+<br/></li><li id='YLU9CA1qsfa' class=''>The target should be the<f style="color:#323232" textcolor="#323232"> </f>IoT Cloud
+
+<br/></li><li id='YLU9CAuZQL5' class=''><f style="color:#323232" textcolor="#323232">For the topic filter enter iotdemo/topic/pub</f>
+
+<br/></li></ul></div>The last one subscription, this allows traffic from the Lambda to ESP32.<br/>
+
+<div data-section-style='5' class="" style=""><ul id='YLU9CALBnUG'><li id='YLU9CAlOIeG' class='' value='1'>Click Add Subscription
+
+<br/></li><li id='YLU9CASLagj' class=''>The source should be our Lambda -<f style="color:#323232" textcolor="#323232"> GreengrassHelloWorld</f>
+
+<br/></li><li id='YLU9CAU71aS' class=''>The target should be our Device -<f style="color:#323232" textcolor="#323232"> tcci-workshop</f>
+
+<br/></li><li id='YLU9CAx0DYq' class=''><f style="color:#323232" textcolor="#323232">For the topic filter enter freertos/demos/led</f>
+
+<br/></li></ul></div><f style="color:#323232" textcolor="#323232">Your subscriptions should now look as follows:</f><br/>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/Hl5rTtn8yrDyGxaOckUclQ?a=DQWN56fnOz2Mjg5VPZAm9KUBI3O5unbHa6HpgzdAT9ka' id='YLU9CAAfpVV' alt='' width='800' height='554'></img></div><h2 id='YLU9CA3wFkh'>Step 5 - Deploying our group</h2>
+
+<f style="color:#323232" textcolor="#323232">We now have everything a working group needs.</f><br/>
+
+<div data-section-style='5' class="" style=""><ul id='YLU9CALKJL2'><li id='YLU9CAZbZ1k' class='' value='1'>Lambdas
+
+<br/></li><li id='YLU9CAJTECr' class=''>Subscriptions
+
+<br/></li><li id='YLU9CANI57k' class=''>Cores
+
+<br/></li><li id='YLU9CAyR3ck' class=''>Devices
+
+<br/></li><li id='YLU9CAgdblC' class=''>Logging (Settings)
+
+<br/></li></ul></div><f style="color:#323232" textcolor="#323232">Let’s go ahead and deploy this group.</f><br/>
+
+<div data-section-style='5' class="" style=""><ul id='YLU9CA5aJ4p'><li id='YLU9CAHxH4G' class='' value='1'>Click on Deployments
+
+<br/></li><li id='YLU9CA7W31q' class=''>Click on Actions, Deploy
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/ILFgV46HD2osgscw70DFww?a=weNpJZBiV4Ut8RoWxyXAVauTZbaGmeTKsdnk2D1rZwQa' id='YLU9CAmizvL' alt='' width='800' height='206'></img></div><div data-section-style='5' class="" style=""><ul id='YLU9CAlcabt'><li id='YLU9CAoufG1' class='' value='1'>Since this is our first deployment you will be asked some additional questions. This only happens once.
+
+<br/></li><li id='YLU9CAmMjGb' class=''>Select Automatic detection
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/CoDC4ed31Tqp4O_7sSet-w?a=ThyRyCFxOf808H5TUwhH2OHAMCAp66HVTeb4FlmGLTAa' id='YLU9CA09jv5' alt='' width='800' height='203'></img></div><f style="color:#323232" textcolor="#323232">You should now see </f><b><f style="color:#323232" textcolor="#323232">Successfully completed</f></b><f style="color:#444444" textcolor="#444444"> in the </f><b><f style="color:#323232" textcolor="#323232">Status</f></b><f style="color:#444444" textcolor="#444444"> column on the </f><b><f style="color:#323232" textcolor="#323232">Deployments</f></b><f style="color:#444444" textcolor="#444444"> page.</f><br/>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/G0V5HPsVRKdAEKgfO-rzyA?a=GwqtapxSU6GOfKYm9crbmCnafnUozVRZQUbS40vGeiEa' id='YLU9CAAfANW' alt='' width='800' height='247'></img></div><h2 id='YLU9CAjbCBW'>Step 6 - Create a test client</h2>
+
+<f style="color:#323232" textcolor="#323232">We’re going to now create our test client acting as the tcci-workshop.</f><br/>
+
+<f style="color:#323232" textcolor="#323232">We need to put these files on our device.</f><br/>
+
+<div data-section-style='5' class="" style=""><ul id='YLU9CAKEisz'><li id='YLU9CAtMVp9' class='' value='1'>Copy aws_clientcredential.h to <b>AmazonFreeRTOS\demos\include</b>
+
+<br/></li><li id='YLU9CAgHdz5' class=''>Copy aws_clientcredential_keys.h to <b>AmazonFreeRTOS\demos\include</b>
+
+<br/></li><li id='YLU9CAprr85' class=''>Copy DHT22.c to <b>AmazonFreeRTOS\vendors\espressif\esp-idf\components\driver</b>
+
+<br/></li><li id='YLU9CAYmRdP' class=''>Copy DHT22.h to <b>AmazonFreeRTOS\vendors\espressif\esp-idf\components\driver\include\driver</b>
+
+<br/></li><li id='YLU9CAXKGDj' class=''>Copy CMakeLists.txt to <b>AmazonFreeRTOS\vendors\espressif\esp-idf\components\driver</b>
+
+<br/></li><li id='YLU9CABMmjp' class=''>Copy aws_demo_config.h to <b>AmazonFreeRTOS\vendors\espressif\boards\esp32\aws_demos\config_files</b>
+
+<br/></li><li id='YLU9CAoY22T' class=''>Copy aws_greengrass_discovery_demo.c file to <b>AmazonFreeRTOS\demos\greengrass_connectivity</b>
+
+<br/></li></ul></div><f style="color:#323232" textcolor="#323232">Before running the test, we want to get the MQTT client watching for our test messages.</f><br/>
+
+<div data-section-style='5' class="" style=""><ul id='YLU9CAxhNpb'><li id='YLU9CAswHqb' class='' value='1'>Open the AWS IoT console
+
+<br/></li><li id='YLU9CAr50yj' class=''>Click on test
+
+<br/></li><li id='YLU9CAPOOz1' class=''>Subscribe to #
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/3wmFBwLy6Wx5PVbxg-b-UA?a=2mZweeFCpwLFbb8Qa5ln6bCYvjNdCyFF3mNkpa2lKRoa' id='YLU9CAMJ5eU' alt='' width='800' height='394'></img></div><f style="color:#323232" textcolor="#323232">Let’s run the test now.</f><br/>
+
+<pre id='YLU9CAnsmjG'>cd AmazonFreeRTOS<br>cmake -DVENDOR=espressif -DBOARD=esp32_devkitc -DCOMPILER=xtensa-esp32  -GNinja -S . -B build\<br>.\vendors\espressif\esp-idf\tools\idf.py build<br>.\vendors\espressif\esp-idf\tools\idf.py -p &lt;COM_PORT&gt; flash</pre>
+
+<f style="color:#323232" textcolor="#323232">You should see a successful connection and message publish. In the browser, you should see the response message and led light up when the vibration happened. Led should be turned off after 5 seconds which triggered by lambda. If you see that then you have everything working.</f><br/>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/YLU9AAJCRfj/8aBbXLf-NOEC0CwiP7ZT1g?a=qQliPUzCfwqv985XDqraAvUjfDyA4UJtgY5ZYBLSaS0a' id='YLU9CASHA6p' alt='' width='800' height='261'></img></div></body></html>

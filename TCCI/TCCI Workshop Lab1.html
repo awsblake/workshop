@@ -1,0 +1,532 @@
+<!doctype html>
+<html><head><title>TCCI Workshop Lab1</title><meta charset="UTF-8"><link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic|Roboto:400,700,700italic,400italic" rel="stylesheet" type="text/css"><style>/*
+ * Copyright 2014 Quip
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+body {
+    font-size: 15px;
+    color: #333;
+    background: white;
+    padding: 60px 95px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern";
+    font-kerning: normal;
+    -moz-font-feature-settings: "kern";
+    -webkit-font-feature-settings: "kern";
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+th {
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    margin: 0;
+    margin-top: 1.25em;
+    margin-bottom: 0.75em;
+}
+
+h1 {
+    font-size: 35px;
+    line-height: 42px;
+}
+
+h1:first-child {
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+h3 {
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+/* Body text */
+body,
+p,
+ul,
+ol,
+td {
+    font-family: "Crimson Text", serif;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+blockquote,
+q {
+    display: block;
+    margin: 1em 0;
+    font-style: italic;
+}
+
+blockquote a,
+q a {
+    text-decoration: underline;
+}
+
+blockquote {
+    padding-left: 10px;
+    border-left: 4px solid #a6a6a6;
+}
+
+q {
+    color: #a6a6a6;
+    line-height: 40px;
+    font-size: 24px;
+    text-align: center;
+    quotes: none;
+}
+
+q a {
+    color: #a6a6a6;
+}
+
+code,
+pre {
+    font-family: Consolas, "Liberation Mono", Menlo, "Courier Prime Web",
+        Courier, monospace;
+    background: #f2f2f2;
+}
+
+code {
+    padding: 1px;
+    margin: 0 -1px;
+    border-radius: 3px;
+}
+
+pre {
+    display: block;
+    line-height: 20px;
+    text-shadow: 0 1px white;
+    padding: 5px 5px 5px 30px;
+    white-space: nowrap;
+    position: relative;
+    margin: 1em 0;
+}
+
+pre:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    border-left: solid 1px #dadada;
+}
+
+/* Lists */
+div[data-section-style="5"],
+div[data-section-style="6"],
+div[data-section-style="7"] {
+    margin: 12px 0;
+}
+
+ul {
+    padding: 0 0 0 40px;
+}
+
+ul li {
+    margin-bottom: 0.4em;
+}
+
+/* Bulleted list */
+div[data-section-style="5"] ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul {
+    list-style-type: square;
+}
+div[data-section-style="5"] ul ul ul ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul ul ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul ul ul ul {
+    list-style-type: square;
+}
+
+/* Numbered list */
+div[data-section-style="6"] ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul {
+    list-style-type: lower-roman;
+}
+div[data-section-style="6"] ul ul ul ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul ul ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul ul ul ul {
+    list-style-type: lower-roman;
+}
+
+/* Checklist */
+div[data-section-style="7"] ul {
+    list-style-type: none;
+}
+
+div[data-section-style="7"] ul li:before {
+    content: "\2610";
+    position: absolute;
+    display: inline;
+    margin-right: 1.2em;
+    margin-left: -1.2em;
+}
+
+div[data-section-style="7"] ul li.parent:before {
+    content: "";
+}
+
+div[data-section-style="7"] ul li.parent {
+    font-weight: bold;
+}
+
+div[data-section-style="7"] ul li.checked {
+    text-decoration: line-through;
+}
+
+div[data-section-style="7"] ul li.checked:before {
+    content: "\2611";
+    text-decoration: none;
+}
+
+/* Tables */
+div[data-section-style="8"] {
+    margin: 12px 0;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: separate;
+    border: solid 1px #bbb;
+    table-layout: fixed;
+    position: relative;
+}
+
+table th,
+table td {
+    padding: 2px 2px 0;
+    min-width: 1.5em;
+    word-wrap: break-word;
+}
+
+table th {
+    border-bottom: 1px solid #c7cbd1;
+    background: #f2f2f2;
+    font-weight: bold;
+    vertical-align: bottom;
+    color: #3a4449;
+    text-align: center;
+}
+
+table td {
+    padding-top: 0;
+    border-left: 1px solid #c7cbd1;
+    border-top: 1px solid #c7cbd1;
+    vertical-align: top;
+}
+
+table td.bold {
+    font-weight: bold;
+}
+
+table td.italic {
+    font-style: italic;
+}
+
+table td.underline {
+    text-decoration: underline;
+}
+
+table td.strikethrough {
+    text-decoration: line-through;
+}
+
+table td.underline.strikethrough {
+    text-decoration: underline line-through;
+}
+
+table td:first-child {
+    border-left: hidden;
+}
+
+table tr:first-child td {
+    border-top: hidden;
+}
+
+/* Images */
+div[data-section-style="11"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div[data-section-style="11"][data-section-float="0"] {
+    clear: both;
+    text-align: center;
+}
+
+div[data-section-style="11"][data-section-float="1"] {
+    float: left;
+    clear: left;
+    margin-right: 20px;
+}
+
+div[data-section-style="11"][data-section-float="2"] {
+    float: right;
+    clear: right;
+    margin-left: 20px;
+}
+
+div[data-section-style="11"] img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+hr {
+    width: 70px;
+    margin: 20px auto;
+}
+
+/* Apps */
+div[data-section-style="19"].placeholder {
+    margin: 0.8em auto;
+    padding: 4px 0;
+    display: block;
+    color: #3d87f5;
+    text-align: center;
+    border: 1px solid rgba(41, 182, 242, 0.2);
+    border-radius: 3px;
+    background: #e9f8fe;
+    font-family: Roboto, sans-serif;
+}
+
+div[data-section-style="19"].first-party-element {
+    margin-bottom: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+div[data-section-style="19"].first-party-element.kanban {
+    background-image: url("https://quip-cdn.com/nK0hSyhsb4jrLIL2s5Ma-g");
+    height: 166px;
+}
+
+div[data-section-style="19"].first-party-element.calendar {
+    background-image: url("https://quip-cdn.com/OYujqLny03RILxcLIiyERg");
+    height: 244px;
+}
+
+div[data-section-style="19"].first-party-element.poll {
+    background-image: url("https://quip-cdn.com/fbIiFrcKGv__4NB7CBfxoA");
+    height: 116px;
+}
+
+div[data-section-style="19"].first-party-element.countdown {
+    background-image: url("https://quip-cdn.com/3bPhykD2dBei9sSjCWteTQ");
+    height: 96px;
+}
+
+div[data-section-style="19"].first-party-element.process_bar {
+    background-image: url("https://quip-cdn.com/ybQlHnHEIIBLog5rZmYs_w");
+    height: 36px;
+}
+
+div[data-section-style="19"].first-party-element.project_tracker {
+    background-image: url("https://quip-cdn.com/OFQU087b4Mxzz1ZaHwtjXA");
+    height: 164px;
+}
+
+div[data-section-style="19"] img {
+    margin: 0.5em;
+}
+
+div[data-section-style="19"] img.masked-image {
+    margin: 0;
+    transform-origin: top left;
+}
+
+div[data-section-style="19"] .image-mask {
+    position: relative;
+    overflow: hidden;
+}
+</style></head><body><h1 id='HYC9CA4f7Mn'>TCCI Workshop Lab1</h1>
+
+<f style="color:#323232" textcolor="#323232">In this lab you will setup an IoT “Thing” in AWS IoT Core, once you have that setup you will run a small program to simulate data being sent to AWS IoT Core and then use the MQTT Test Client to view each MQTT message payload.</f><br/>
+
+<br/>
+
+<h2 id='HYC9CAbM7Yx'>Architecture</h2>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/zMyfvDVOfanSmaVICtcHYw?a=Aax1FXMsGiJ0FFmPfkxNSjSamiPAbZqMpBVfe7laF2ga' id='HYC9CA9Qm0d' alt='' width='711' height='479'></img></div><h2 id='HYC9CAU5Ryj'>Step 1 - Creating your first “Thing”, security policies and certificates.</h2>
+
+<f style="color:#323232" textcolor="#323232">Let’s get your account setup with a new Thing, certificates and security policies.</f><br/>
+
+<f style="color:#323232" textcolor="#323232">Log into your AWS console and make sure you can access the AWS IoT dashboard. It should like the following:</f><br/>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/ZVnpmwYVDYAOAgnz1UrpuA?a=y4uUlrDVhoON2UFfDkTYgv52M45TzWQNaeh653L88DYa' id='HYC9CAeXxIO' alt='' width='800' height='505'></img></div><f style="color:#323232" textcolor="#323232">Let’s create our first “thing” and setup the policy and certificates for this to work.</f><br/>
+
+<h2 id='HYC9CADgbMt'>Step 2 - FreeRTOS Wizard</h2>
+
+In the above screenshot you’ll see a <b>“Software”</b> menu option. Select this to continue.<br/>
+
+You’ll now see this screen:<br/>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/Lf0Fh1smw16POK9HIhOeDw?a=KwBLIxkLRwzZyc3WFinCHYZnIWmNMmPbvamqMHhndm0a' id='HYC9CAL6dF0' alt='' width='800' height='377'></img></div>We’re going to select <b>“Amazon FreeRTOS Device Software”</b> - click the configure download button.<br/>
+
+Next we’re going to pick our target hardware platform. This is used to generate a full package for us to quickly connect to AWS IoT.<br/>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/L2vkpXjZpvcqZN194KGpJw?a=NLa54f7LebzVoRc0Cdu6HXvjQzT005aheeH0umwSZtEa' id='HYC9CAnt2aU' alt='' width='800' height='501'></img></div><f style="color:#323232" textcolor="#323232">For the hardware we’re working on today let’s pick <b>ESP32-DevKitC</b> as our platform.</f><br/>
+
+<f style="color:#323232" textcolor="#323232">You will now see this screen</f><br/>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/fHPDriL253oGEvktW_Sc1Q?a=FuNGCtWhGTvhu0mbFoi2d3I7t2z6FZaVa5KP3v28CCIa' id='HYC9CA6Sh8s' alt='' width='800' height='789'></img></div><h2 id='HYC9CACgEww'>Step 3 - Creating Things</h2>
+
+<f style="color:#323232" textcolor="#323232">Ok so now we’re ready to get started. Click getting started and then download .</f><br/>
+
+<f style="color:#323232" textcolor="#323232">Download the FreeRTOS zip file containing all your certificates.</f><br/>
+
+<div data-section-style='11' class='tall' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/aORXC5iLFlLvsd_1l6lNNg?a=uaIVd2v7Ep8qE2aOtDC7inBEgZBiHh2xI6s9d79jERca' id='HYC9CA6EINR' alt='' width='656' height='884'></img></div><blockquote id='HYC9CAXzllH'><f style="color:#999999" textcolor="#999999">Note - Do not lose this zip file, it contains your private key file.</f></blockquote>
+
+<f style="color:#323232" textcolor="#323232">Click </f><b><f style="color:#323232" textcolor="#323232">Create and download</f></b><f style="color:#323232" textcolor="#323232"> then enter a name for your new Thing.</f><br/>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/CdEAkwLj-PfvUW_44J0pIw?a=K1IpZLa0kHdtOhoIt8aQSakdqomBt3L220UapuaXOeca' id='HYC9CAHUpy1' alt='' width='800' height='367'></img></div><f style="color:#323232" textcolor="#323232">For these labs let’s call our new thing, <b>tcci-workshop</b></f><f style="color:#323232" textcolor="#323232">. Enter this name and click </f><b>Next step<f style="color:#323232" textcolor="#323232">.</f></b><br/>
+
+<f style="color:#323232" textcolor="#323232">On the next screen you can see that everything has been generated for you!</f><br/>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/cbyvvl3rbP6zdM3nMx1v1w?a=TeGMjvpLSlSsalpY1dhHQvRv21dSlEqFFrTauphcmYAa' id='HYC9CASsN65' alt='' width='800' height='517'></img></div><f style="color:#323232" textcolor="#323232">So let’s see exactly what was generated.</f><br/>
+
+<div class="" data-section-style='5' style=""><ul id='HYC9CA46ree'><li id='HYC9CAJKd0U' class='' value='1'>You’ll notice a security policy has been created for you allowing you to immediately send and receive messages.
+
+<br/></li><li id='HYC9CA3mSH8' class=''>A aws_clientcredential.h has been created, this header file will be used to network configuration.
+
+<br/></li><li id='HYC9CAUgftx' class=''>Finally, a Credentials zip file containing all your certificates.
+
+<br/></li></ul></div><blockquote id='HYC9CAP0kBt'><f style="color:#999999" textcolor="#999999">Note - Do not lose this zip file, it contains your private key file which cannot be retrieved again.</f></blockquote>
+
+<f style="color:#323232" textcolor="#323232">Click <b>D</b></f><f style="color:#323232" textcolor="#323232"><b>ownload and continue</b> then follow the instruction to configure your Wi-Fi.</f><br/>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/nnXKm8zLS6WwcBSdaxIKnQ?a=UYJy3Oa8znackAkBltcHvYx7iN1Y2fMXcyenYZDRIsga' id='HYC9CA0g1YC' alt='' width='800' height='668'></img></div>Unzip the Credentials.zip and open the aws_clientcredential.h file. Modify the following define.<br/>
+
+<div class="" data-section-style='5' style=""><ul id='HYC9CAjheH7'><li id='HYC9CA8PklT' class='' value='1'>clientcredentialWIFI_SSID as your network’s SSID
+
+<br/></li><li id='HYC9CAYSvvq' class=''>clientcredentialWIFI_PASSWORD as your network’s password
+
+<br/></li><li id='HYC9CABoDG6' class=''>clientcredentialWIFI_SECURITY as your network's security type
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/RhxplwSyad9cPecr8LUL-g?a=L8I8EZa8sIaSZrnyB6YuIPmdgDb5nb1Z4SRvUqScnRga' id='HYC9CAqVg9j' alt='' width='800' height='374'></img></div><f style="color:#323232" textcolor="#323232">Click <b>Test</b></f><b><f style="color:#323232" textcolor="#323232"> </f></b><f style="color:#323232" textcolor="#323232">then waiting for messages from your device.</f><br/>
+
+<div class="" data-section-style='5' style=""><ul id='HYC9CAnuZMF'><li id='HYC9CAVUd4v' class='' value='1'>Click<f style="color:#323232" textcolor="#323232"> </f>Done<f style="color:#323232" textcolor="#323232"> </f>to complete the Wizard
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/ZDY3K_S-4iUYMlGGPr1mWQ?a=8Sy1IWxsVTYkvALNHYNqh74lewfr2sL9Y0BJ8CkcJk4a' id='HYC9CA5l600' alt='' width='800' height='353'></img></div><h2 id='HYC9CAF3uTC'>Step 4 - Adjust our “Thing” Security Policy</h2>
+
+The default security policy created by the above wizard will limit the resources your device can connect on. For the labs in this workshop we’re going to create a more open policy. So we need to find and edit the policy that has been created already.<br/>
+
+<div class="" data-section-style='5' style=""><ul id='HYC9CAPj29v'><li id='HYC9CAq8Bln' class='' value='1'>In the IoT Console click on <b>Manage</b> - it will default to Things.
+
+<br/></li><li id='HYC9CAOfj9q' class=''>Find the thing you just created, in this case look for <b>tcci-workshop</b>.
+
+<br/></li><li id='HYC9CAV1Ms4' class=''>Click on your device to see it’s details.
+
+<br/></li><li id='HYC9CAbB7jX' class=''>Click on <b>Security</b>.
+
+<br/></li><li id='HYC9CAqifMr' class=''><f style="color:#323232" textcolor="#323232">Click on the attached certificate - see below</f>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/1mRhg1OLesj8mOHlqyWFYw?a=YTh3LHMTB2FcvxIQMBV4DvWfjctGbY3o8Gh3HbSzwK8a' id='HYC9CAgHiP1' alt='' width='800' height='484'></img></div><div class="" data-section-style='5' style=""><ul id='HYC9CAKvxGg'><li id='HYC9CA1S7Mv' class='' value='1'>You will see your certificate details.
+
+<br/></li><li id='HYC9CAOmE9X' class=''>Click on<f style="color:#323232" textcolor="#323232"> </f><b>Policies</b>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/Q1x6AEAU77yXfd7v7q7UOg?a=ifXU1aRF3VBfpDxSTDr2AxwBoal0IZLhbjUL8MAqXDAa' id='HYC9CACBEfJ' alt='' width='800' height='315'></img></div><div class="" data-section-style='5' style=""><ul id='HYC9CAibZd8'><li id='HYC9CAIDtVx' class='' value='1'>Click on your policy, usually that’s<f style="color:#323232" textcolor="#323232"> <b>tcci-workshop</b></f><b>-Policy</b>.
+
+<br/></li><li id='HYC9CAukMex' class=''>Click<f style="color:#323232" textcolor="#323232"> </f><b>Edit Policy Document</b>
+
+<br/></li><li id='HYC9CAbE1dN' class=''><span data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/vszIwCzKbaXhIS2TlBSYgw?a=OCAi3G9zLBaM9LZVxtriLUEiJpKF0HHITkLllgCidoUa' id='HYC9CAbE1dN' alt='' width='800' height='765'></img></span></li><li id='HYC9CA3Zflz' class=''>Enter the following for your document.
+
+<br/></li></ul></div><pre id='HYC9CAOz8CV'><code>{<br>  "Version": "2012-10-17",<br>  "Statement": [<br>    {<br>      "Effect": "Allow",<br>      "Action": [<br>        "iot:Publish",<br>        "iot:Subscribe",<br>        "iot:Connect",<br>        "iot:Receive",<br>        "greengrass:*"<br>      ],<br>      "Resource": [<br>        "*"<br>      ]<br>    }<br>  ]<br>}</code></pre>
+
+<div class="" data-section-style='5' style=""><ul id='HYC9CAx6pXZ'><li id='HYC9CAkaBsm' class='' value='1'>Click<f style="color:#323232" textcolor="#323232"> </f><b>Save as new version</b>
+
+<br/></li><li id='HYC9CA40HUk' class=''><span data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/jplzJoFGRzm6uL82WK4LfQ?a=b73SwgXsaqaO4zqmVfw6altZ90D8Gd2XFT5F9Ng3LUAa' id='HYC9CA40HUk' alt='' width='800' height='589'></img></span></li></ul></div><f style="color:#323232" textcolor="#323232">That’s it! your device can now publish and subscribe to any topics.</f><br/>
+
+<h2 id='HYC9CAeHhVm'>Step 5 - Quick Review</h2>
+
+<f style="color:#323232" textcolor="#323232">Let’s have a quick review.</f><br/>
+
+<div class="" data-section-style='5' style=""><ul id='HYC9CA6N6CX'><li id='HYC9CA1Swog' class='' value='1'>Your certificates have been created<f style="color:#323232" textcolor="#323232"> </f>and<f style="color:#323232" textcolor="#323232"> </f>activated for you.
+
+<br/></li><li id='HYC9CAGQkYs' class=''>A security policy has been created and modified for the access we need.
+
+<br/></li><li id='HYC9CAB7DMD' class=''>The certificate and security policy have been attached to the thing “tcci-workshop” that you created.
+
+<br/></li></ul></div><f style="color:#323232" textcolor="#323232">The above are the three requirement components to use AWS IoT.</f><br/>
+
+<h2 id='HYC9CAQz4BH'>Step 6 - Copy files to your device</h2>
+
+<f style="color:#323232" textcolor="#323232">We need to put these files on our device.</f><br/>
+
+<div class="" data-section-style='5' style=""><ul id='HYC9CA51BHx'><li id='HYC9CAPpYTJ' class='' value='1'>Copy aws_clientcredential.h to <b>AmazonFreeRTOS\demos\include</b>
+
+<br/></li><li id='HYC9CALqI1f' class=''>Copy aws_clientcredential_keys.h to <b>AmazonFreeRTOS\demos\include</b>
+
+<br/></li><li id='HYC9CAYPMwa' class=''>Copy DHT22.c to <b>AmazonFreeRTOS\vendors\espressif\esp-idf\components\driver</b>
+
+<br/></li><li id='HYC9CAemGEc' class=''>Copy DHT22.h to <b>AmazonFreeRTOS\vendors\espressif\esp-idf\components\driver\include\driver</b>
+
+<br/></li><li id='HYC9CAV3YMm' class=''>Copy CMakeLists.txt to <b>AmazonFreeRTOS\vendors\espressif\esp-idf\components\driver</b>
+
+<br/></li><li id='HYC9CAGg21J' class=''>Copy aws_demo_config.h to <b>AmazonFreeRTOS\vendors\espressif\boards\esp32\aws_demos\config_files</b>
+
+<br/></li><li id='HYC9CAczsbD' class=''>Copy iot_demo_mqtt.c file to <b>AmazonFreeRTOS\demos\mqtt</b>
+
+<br/></li></ul></div><h2 id='HYC9CA0Itmt'>Step 7 - Test</h2>
+
+<f style="color:#323232" textcolor="#323232">Now you can run the lab. Check your com port in device manager before you flash device.</f><br/>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/o1kGNbd2BOJUilUzq6D8Bg?a=AmaJyxUGX0rZCkquuEQgbKVehl8Hx3aeTkgTLalofDMa' id='HYC9CAy2uCL' alt='' width='800' height='586'></img></div><pre id='HYC9CA0yhEf'>cd AmazonFreeRTOS<br>cmake -DVENDOR=espressif -DBOARD=esp32_devkitc -DCOMPILER=xtensa-esp32  -GNinja -S . -B build\<br>.\vendors\espressif\esp-idf\tools\idf.py build<br>.\vendors\espressif\esp-idf\tools\idf.py -p &lt;COM_PORT&gt; flash</pre>
+
+<f style="color:#323232" textcolor="#323232">To check and see if your message was published to the message broker go to the MQTT Client and subscribe to the iot topic and you should see your JSON Payload.</f><br/>
+
+<div class="" data-section-style='5' style=""><ul id='HYC9CAWcrFX'><li id='HYC9CAn0YkC' class='' value='1'>Open the IoT Console
+
+<br/></li><li id='HYC9CAKt6X2' class=''>Click on<f style="color:#323232" textcolor="#323232"> </f><b>Test</b>
+
+<br/></li><li id='HYC9CA71se4' class=''>Subscribe to<f style="color:#323232" textcolor="#323232"> </f><b>#</b>
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/dus_AwHoeE8s-rJ6oRsePA?a=U1qKiQw98cwaUegsi1fanfYOkMURNa4HPUyLPn42X1oa' id='HYC9CAYkDuy' alt='' width='800' height='526'></img></div>You will receive the temperature and humidity data from your device.<br/>
+
+<div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/098jrZhEV-DX8lTGPCZyNw?a=EVwonOk9YPYF71C8WjvY3zJsecAUyxoEWn0UauvuJ88a' id='HYC9CAhZfXd' alt='' width='800' height='396'></img></div>Publish to<f style="color:#323232" textcolor="#323232"> <b>iotdemo/topic/sub</b> with the payload can turn off the LED.</f><br/>
+
+<div class="" data-section-style='5' style=""><ul id='HYC9CAmOccV'><li id='HYC9CAdyECw' class='' value='1'>{“led”: “off”}
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%'><img src='https://quip-amazon.com/blob/HYC9AASBACn/-peQeXloenHtpC-gFDY-dQ?a=LNXNcsjxSwUAQ3aNxlzFec9Vqw3KmX9lclvwSwEhAWYa' id='HYC9CAipSZI' alt='' width='800' height='406'></img></div></body></html>
