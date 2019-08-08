@@ -227,7 +227,11 @@ static void prvSendMessageToGGC( GGD_HostAddressData_t * pxHostAddressData )
         xReturnCode = MQTT_AGENT_Subscribe( xMQTTClientHandle,
                                           &xSubscribeParams,
                                           xMaxCommandTime );
-        TEST_ASSERT_EQUAL_INT( xReturnCode, eMQTTAgentSuccess );
+        if( xReturnCode != eMQTTAgentSuccess )
+        {
+            configPRINTF(( "%s: Could not subscribe to topic.\r\n", __FUNCTION__ ));
+            return;
+        }
 
         /* Publish to the topic to which this task is subscribed in order
          * to receive back the data that was published. */
